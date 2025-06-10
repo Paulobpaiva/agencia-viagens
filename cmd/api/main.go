@@ -5,13 +5,13 @@ import (
 	"log"
 	"os"
 
+	_ "github.com/Paulobpaiva/agencia-viagens/docs" // Importa a documentação gerada
+	"github.com/Paulobpaiva/agencia-viagens/internal/config"
+	"github.com/Paulobpaiva/agencia-viagens/internal/delivery/http"
+	"github.com/Paulobpaiva/agencia-viagens/internal/repository"
+	"github.com/Paulobpaiva/agencia-viagens/internal/usecase"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	_ "github.com/paulopaiva/agencia-viagens/docs" // Importa a documentação gerada
-	"github.com/paulopaiva/agencia-viagens/internal/config"
-	"github.com/paulopaiva/agencia-viagens/internal/delivery/http"
-	"github.com/paulopaiva/agencia-viagens/internal/repository"
-	"github.com/paulopaiva/agencia-viagens/internal/usecase"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
