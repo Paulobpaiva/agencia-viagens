@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
+	"agencia-viagens/internal/domain"
 )
 
 var (

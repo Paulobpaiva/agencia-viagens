@@ -4,8 +4,9 @@ import (
 	"context"
 	"time"
 
+	"agencia-viagens/internal/domain"
+
 	"github.com/google/uuid"
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
 	"gorm.io/gorm"
 )
 
@@ -87,13 +88,13 @@ func (r *veiculoRepository) GetByTipo(ctx context.Context, tipo domain.TipoVeicu
 
 func (r *veiculoRepository) GetDisponiveis(ctx context.Context, dataInicio, dataFim time.Time) ([]*domain.Veiculo, error) {
 	var veiculos []*domain.Veiculo
-	
+
 	// Subquery para encontrar veículos ocupados no período
 	subQuery := r.db.Model(&domain.Viagem{}).
 		Select("veiculo_id").
 		Where("status != ? AND ((data_inicio BETWEEN ? AND ?) OR (data_fim BETWEEN ? AND ?))",
 			domain.StatusCancelada, dataInicio, dataFim, dataInicio, dataFim)
-	
+
 	// Query principal para encontrar veículos disponíveis
 	err := r.db.WithContext(ctx).
 		Where("status = ? AND id NOT IN (?)", domain.StatusDisponivel, subQuery).
@@ -131,4 +132,4 @@ func (r *veiculoRepository) GetVeiculosDocumentacaoVencida(ctx context.Context) 
 		return nil, err
 	}
 	return veiculos, nil
-} 
+}

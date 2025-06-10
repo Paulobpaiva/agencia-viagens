@@ -1,4 +1,4 @@
-module github.com/Paulobpaiva/agencia-viagens
+module agencia-viagens
 
 go 1.21
 

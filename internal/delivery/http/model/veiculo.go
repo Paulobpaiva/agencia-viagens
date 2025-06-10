@@ -1,10 +1,9 @@
 package model
 
 import (
+	"agencia-viagens/internal/domain"
+	"agencia-viagens/internal/validator"
 	"time"
-
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
-	"github.com/paulopaiva/agencia-viagens/internal/validator"
 )
 
 // CreateVeiculoRequest representa a requisição de criação de veículo

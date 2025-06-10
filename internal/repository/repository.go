@@ -4,10 +4,11 @@ import (
 	"context"
 	"time"
 
+	"agencia-viagens/internal/config"
+	"agencia-viagens/internal/domain"
+	"agencia-viagens/internal/repository/postgres"
+
 	"github.com/google/uuid"
-	"github.com/paulopaiva/agencia-viagens/internal/config"
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
-	"github.com/paulopaiva/agencia-viagens/internal/repository/postgres"
 	"gorm.io/gorm"
 )
 

@@ -1,10 +1,14 @@
 package postgres
 
 import (
+	"context"
 	"fmt"
 	"time"
 
-	"github.com/paulopaiva/agencia-viagens/internal/config"
+	"agencia-viagens/internal/config"
+	"agencia-viagens/internal/domain"
+
+	_ "github.com/lib/pq"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -104,4 +108,4 @@ func GetTxFromContext(ctx context.Context) *gorm.DB {
 		return tx
 	}
 	return nil
-} 
+}

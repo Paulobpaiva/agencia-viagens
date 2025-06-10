@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"agencia-viagens/internal/validator"
+
 	"github.com/gin-gonic/gin"
-	"github.com/paulopaiva/agencia-viagens/internal/validator"
 )
 
 // Validator é uma interface para validar objetos
