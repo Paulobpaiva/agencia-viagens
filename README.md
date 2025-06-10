@@ -31,7 +31,7 @@ Sistema completo para gerenciamento de viagens de veículos, desenvolvido em Go 
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/paulopaiva/agencia-viagens.git
+git clone https://github.com/Paulobpaiva/agencia-viagens.git
 cd agencia-viagens
 ```
 
@@ -91,4 +91,4 @@ O projeto está configurado para deploy no Railway.app. Para fazer o deploy:
 
 ## 📝 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes. 
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
