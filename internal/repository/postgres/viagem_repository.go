@@ -4,8 +4,9 @@ import (
 	"context"
 	"time"
 
+	"agencia-viagens/internal/domain"
+
 	"github.com/google/uuid"
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
 	"gorm.io/gorm"
 )
 
@@ -59,7 +60,7 @@ func (r *viagemRepository) List(ctx context.Context, offset, limit int) ([]*doma
 	return viagens, nil
 }
 
-func (r *viagemRepository) GetByVeiculo(ctx context.Context, veiculoID uuid.UUID, 
+func (r *viagemRepository) GetByVeiculo(ctx context.Context, veiculoID uuid.UUID,
 	dataInicio, dataFim time.Time) ([]*domain.Viagem, error) {
 	var viagens []*domain.Viagem
 	err := r.db.WithContext(ctx).
@@ -120,4 +121,4 @@ func (r *viagemRepository) CheckDisponibilidade(ctx context.Context, veiculoID u
 		return false, err
 	}
 	return count == 0, nil
-} 
+}

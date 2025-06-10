@@ -3,9 +3,10 @@ package model
 import (
 	"time"
 
+	"agencia-viagens/internal/domain"
+	"agencia-viagens/internal/validator"
+
 	"github.com/google/uuid"
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
-	"github.com/paulopaiva/agencia-viagens/internal/validator"
 )
 
 // CreateViagemRequest representa a requisição de criação de viagem

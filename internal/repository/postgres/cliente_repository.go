@@ -3,8 +3,9 @@ package postgres
 import (
 	"context"
 
+	"agencia-viagens/internal/domain"
+
 	"github.com/google/uuid"
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
 	"gorm.io/gorm"
 )
 
@@ -92,7 +93,7 @@ func (r *clienteRepository) GetClientesPorCidade(ctx context.Context) (map[strin
 		Cidade string
 		Total  int
 	}
-	
+
 	var results []Result
 	err := r.db.WithContext(ctx).
 		Model(&domain.Cliente{}).
@@ -104,12 +105,12 @@ func (r *clienteRepository) GetClientesPorCidade(ctx context.Context) (map[strin
 	if err != nil {
 		return nil, err
 	}
-	
+
 	clientesPorCidade := make(map[string]int)
 	for _, r := range results {
 		clientesPorCidade[r.Cidade] = r.Total
 	}
-	
+
 	return clientesPorCidade, nil
 }
 
@@ -119,7 +120,7 @@ func (r *clienteRepository) GetClientesPorEstado(ctx context.Context) (map[strin
 		Estado string
 		Total  int
 	}
-	
+
 	var results []Result
 	err := r.db.WithContext(ctx).
 		Model(&domain.Cliente{}).
@@ -131,12 +132,12 @@ func (r *clienteRepository) GetClientesPorEstado(ctx context.Context) (map[strin
 	if err != nil {
 		return nil, err
 	}
-	
+
 	clientesPorEstado := make(map[string]int)
 	for _, r := range results {
 		clientesPorEstado[r.Estado] = r.Total
 	}
-	
+
 	return clientesPorEstado, nil
 }
 
@@ -146,7 +147,7 @@ func (r *clienteRepository) GetClientesPorTipo(ctx context.Context) (map[domain.
 		Tipo  domain.TipoCliente
 		Total int
 	}
-	
+
 	var results []Result
 	err := r.db.WithContext(ctx).
 		Model(&domain.Cliente{}).
@@ -156,12 +157,12 @@ func (r *clienteRepository) GetClientesPorTipo(ctx context.Context) (map[domain.
 	if err != nil {
 		return nil, err
 	}
-	
+
 	clientesPorTipo := make(map[domain.TipoCliente]int)
 	for _, r := range results {
 		clientesPorTipo[r.Tipo] = r.Total
 	}
-	
+
 	return clientesPorTipo, nil
 }
 
@@ -176,4 +177,4 @@ func (r *clienteRepository) GetClientesLimiteCreditoExcedido(ctx context.Context
 		return nil, err
 	}
 	return clientes, nil
-} 
+}

@@ -4,8 +4,9 @@ import (
 	"context"
 	"time"
 
+	"agencia-viagens/internal/domain"
+
 	"github.com/google/uuid"
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
 	"gorm.io/gorm"
 )
 
@@ -84,16 +85,16 @@ func (r *motoristaRepository) GetByStatus(ctx context.Context, status domain.Sta
 
 func (r *motoristaRepository) GetDisponiveis(ctx context.Context, dataInicio, dataFim time.Time) ([]*domain.Motorista, error) {
 	var motoristas []*domain.Motorista
-	
+
 	// Subquery para encontrar motoristas ocupados no período
 	subQuery := r.db.Model(&domain.Viagem{}).
 		Select("motorista_id").
 		Where("status != ? AND ((data_inicio BETWEEN ? AND ?) OR (data_fim BETWEEN ? AND ?))",
 			domain.StatusCancelada, dataInicio, dataFim, dataInicio, dataFim)
-	
+
 	// Query principal para encontrar motoristas disponíveis
 	err := r.db.WithContext(ctx).
-		Where("status = ? AND disponivel = ? AND id NOT IN (?)", 
+		Where("status = ? AND disponivel = ? AND id NOT IN (?)",
 			domain.StatusDisponivel, true, subQuery).
 		Order("nome ASC").
 		Find(&motoristas).Error
@@ -122,7 +123,7 @@ func (r *motoristaRepository) GetMotoristasCNHVencida(ctx context.Context) ([]*d
 func (r *motoristaRepository) GetMotoristasProximosVencimentoCNH(ctx context.Context) ([]*domain.Motorista, error) {
 	var motoristas []*domain.Motorista
 	err := r.db.WithContext(ctx).
-		Where("validade_cnh BETWEEN ? AND ?", 
+		Where("validade_cnh BETWEEN ? AND ?",
 			time.Now(), time.Now().AddDate(0, 3, 0)). // Próximos 3 meses
 		Order("validade_cnh ASC").
 		Find(&motoristas).Error
@@ -143,4 +144,4 @@ func (r *motoristaRepository) GetMotoristasBancoHorasExcedido(ctx context.Contex
 		return nil, err
 	}
 	return motoristas, nil
-} 
+}

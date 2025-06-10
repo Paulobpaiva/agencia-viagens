@@ -5,9 +5,10 @@ import (
 	"errors"
 	"regexp"
 
+	"agencia-viagens/internal/domain"
+	"agencia-viagens/internal/repository"
+
 	"github.com/google/uuid"
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
-	"github.com/paulopaiva/agencia-viagens/internal/repository"
 )
 
 var (

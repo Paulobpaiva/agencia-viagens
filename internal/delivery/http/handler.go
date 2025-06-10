@@ -3,11 +3,12 @@ package http
 import (
 	"net/http"
 
+	"agencia-viagens/internal/delivery/http/middleware"
+	"agencia-viagens/internal/domain"
+	"agencia-viagens/internal/usecase"
+
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/paulopaiva/agencia-viagens/internal/delivery/http/middleware"
-	"github.com/paulopaiva/agencia-viagens/internal/domain"
-	"github.com/paulopaiva/agencia-viagens/internal/usecase"
 )
 
 type Handler struct {

@@ -4,8 +4,9 @@ import (
 	"net/http"
 	"time"
 
+	"agencia-viagens/internal/auth"
+
 	"github.com/gin-gonic/gin"
-	"github.com/paulopaiva/agencia-viagens/internal/auth"
 )
 
 // LoginRequest representa os dados necessários para autenticação
