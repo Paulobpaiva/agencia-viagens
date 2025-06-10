@@ -4,8 +4,9 @@ import (
 	"net/http"
 	"strings"
 
+	"agencia-viagens/internal/auth"
+
 	"github.com/gin-gonic/gin"
-	"github.com/paulopaiva/agencia-viagens/internal/auth"
 )
 
 // Middleware para autenticação JWT

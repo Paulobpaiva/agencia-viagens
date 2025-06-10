@@ -1,32 +1,32 @@
-import { Calendar, Car, Users, TrendingUp } from 'lucide-react'
+import { TrendingUp, Car, Users, DollarSign } from 'lucide-react'
 
 const stats = [
   {
     name: 'Viagens em Andamento',
-    value: '12',
-    icon: Calendar,
-    change: '+4.75%',
+    value: 12,
+    icon: <TrendingUp className="text-blue-500 w-8 h-8" />,
+    change: '+8%',
     changeType: 'positive',
   },
   {
     name: 'Veículos Disponíveis',
-    value: '8',
-    icon: Car,
-    change: '+2.02%',
-    changeType: 'positive',
-  },
-  {
-    name: 'Motoristas Ativos',
-    value: '15',
-    icon: Users,
-    change: '-1.39%',
+    value: 7,
+    icon: <Car className="text-green-500 w-8 h-8" />,
+    change: '-2%',
     changeType: 'negative',
   },
   {
+    name: 'Motoristas Ativos',
+    value: 15,
+    icon: <Users className="text-purple-500 w-8 h-8" />,
+    change: '+3%',
+    changeType: 'positive',
+  },
+  {
     name: 'Faturamento Mensal',
-    value: 'R$ 45.231,00',
-    icon: TrendingUp,
-    change: '+10.18%',
+    value: 'R$ 12.500',
+    icon: <DollarSign className="text-yellow-500 w-8 h-8" />,
+    change: '+12%',
     changeType: 'positive',
   },
 ]
@@ -34,62 +34,33 @@ const stats = [
 export function Dashboard() {
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-
-      <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {stats.map((item) => (
+      <h2 className="text-2xl font-bold mb-6 text-gray-800">Dashboard</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {stats.map((stat) => (
           <div
-            key={item.name}
-            className="relative overflow-hidden rounded-lg bg-white px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6"
+            key={stat.name}
+            className="card flex flex-col items-start gap-2 border border-gray-100 hover:shadow-lg transition-shadow duration-200"
           >
-            <dt>
-              <div className="absolute rounded-md bg-indigo-500 p-3">
-                <item.icon className="h-6 w-6 text-white" aria-hidden="true" />
-              </div>
-              <p className="ml-16 truncate text-sm font-medium text-gray-500">{item.name}</p>
-            </dt>
-            <dd className="ml-16 flex items-baseline pb-6 sm:pb-7">
-              <p className="text-2xl font-semibold text-gray-900">{item.value}</p>
-              <p
-                className={`ml-2 flex items-baseline text-sm font-semibold ${
-                  item.changeType === 'positive' ? 'text-green-600' : 'text-red-600'
-                }`}
-              >
-                {item.change}
-              </p>
-            </dd>
+            <div className="flex items-center gap-3 mb-2">
+              {stat.icon}
+              <span className="text-gray-600 text-sm font-medium">{stat.name}</span>
+            </div>
+            <span className="text-3xl font-bold text-gray-900">{stat.value}</span>
+            <span
+              className={`text-xs font-semibold ${stat.changeType === 'positive' ? 'text-green-600' : 'text-red-600'}`}
+            >
+              {stat.change}
+            </span>
           </div>
         ))}
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-2">
-        {/* Aqui podemos adicionar gráficos de viagens por mês, disponibilidade de veículos, etc */}
-        <div className="overflow-hidden rounded-lg bg-white shadow">
-          <div className="p-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
-              Viagens por Mês
-            </h3>
-            <div className="mt-6 h-96">
-              {/* TODO: Adicionar gráfico */}
-              <div className="flex h-full items-center justify-center text-gray-500">
-                Gráfico de viagens por mês
-              </div>
-            </div>
-          </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="card h-64 flex flex-col justify-center items-center border border-gray-100">
+          <span className="text-gray-400">[Gráfico de Viagens por Mês]</span>
         </div>
-
-        <div className="overflow-hidden rounded-lg bg-white shadow">
-          <div className="p-6">
-            <h3 className="text-lg font-medium leading-6 text-gray-900">
-              Disponibilidade de Veículos
-            </h3>
-            <div className="mt-6 h-96">
-              {/* TODO: Adicionar gráfico */}
-              <div className="flex h-full items-center justify-center text-gray-500">
-                Gráfico de disponibilidade
-              </div>
-            </div>
-          </div>
+        <div className="card h-64 flex flex-col justify-center items-center border border-gray-100">
+          <span className="text-gray-400">[Gráfico de Disponibilidade de Veículos]</span>
         </div>
       </div>
     </div>
